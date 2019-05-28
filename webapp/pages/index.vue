@@ -1,6 +1,9 @@
 <template>
   <div>
     <ds-flex v-if="Post && Post.length" :width="{ base: '100%' }" gutter="base">
+      <ds-flex-item>
+        <filter-menu />
+      </ds-flex-item>
       <ds-flex-item
         v-for="post in uniq(Post)"
         :key="post.id"
@@ -24,6 +27,7 @@
 </template>
 
 <script>
+import FilterMenu from '~/components/FilterMenu/FilterMenu.vue'
 import gql from 'graphql-tag'
 import uniqBy from 'lodash/uniqBy'
 import HcPostCard from '~/components/PostCard'
@@ -31,6 +35,7 @@ import HcLoadMore from '~/components/LoadMore.vue'
 
 export default {
   components: {
+    FilterMenu,
     HcPostCard,
     HcLoadMore,
   },
